@@ -1,6 +1,7 @@
 import json
 
 from flask import Flask, request, Response, url_for, send_from_directory
+from flask_cors import CORS
 
 from models import init_db, prepare_db
 from services import init_services, create_account, create_session, remove_session, fetch_session, check_session, \
