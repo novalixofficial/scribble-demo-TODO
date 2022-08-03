@@ -6,7 +6,7 @@ Thank you for checking this project, we are trully grateful that you are taking 
 
 ## Objective
 
-### 1 - Make your own public repository on Github and start with the code we gave you
+### 1 - Fork this and make your own public repository on Github
 
 We've removed some components or functions here and there, and replaced them by comments in the format `// TODO` (in frontend) or `# TODO` (in backend).
 
