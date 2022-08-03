@@ -23,6 +23,7 @@ djangorestframework
 docopt
 drf-yasg
 Flask 
+flask-cors
 Flask-Session
 Flask-SQLAlchemy 
 greenlet 
