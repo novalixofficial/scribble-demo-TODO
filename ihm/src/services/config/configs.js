@@ -1,8 +1,8 @@
-﻿const configs = Object.freeze({
+const configs = Object.freeze({
     DEV: {
         name: "DEV",
         debug: true,
-        baseUrl: "http://localhost:8080"
+        baseUrl: "http://dev.localhost:8080"
     },
     PROD: {
         name: "PROD",
