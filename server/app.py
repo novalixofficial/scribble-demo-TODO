@@ -12,12 +12,12 @@ from utils import ServerKnownError, ClientKnownError
 
 app = Flask(__name__)
 app.config.from_object('config')
-cors: CORS
+
 cors = CORS(app, resources={
     "*": {
         "origins": "*"
     }
-})
+}, supports_credentials=True)
 
 prepare_db(app)
 init_services(app)
