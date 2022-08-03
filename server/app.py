@@ -1,4 +1,5 @@
 import json
+import logging
 
 from flask import Flask, request, Response, url_for, send_from_directory
 from flask_cors import CORS
@@ -10,9 +11,10 @@ from services import init_services, create_account, create_session, remove_sessi
     edit_account, search_all_drawings
 from utils import ServerKnownError, ClientKnownError
 
+logging.getLogger('flask_cors').level = logging.DEBUG
+
 app = Flask(__name__)
 app.config.from_object('config')
-
 cors = CORS(app, resources={
     "*": {
         "origins": "*"
