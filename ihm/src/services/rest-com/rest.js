@@ -11,6 +11,7 @@ registerRestMiddleware(baseIngoingMiddleware, baseOutgoingMiddleware)
 axios.interceptors.request.use(applyOutgoingMiddlewares, err => applyOutgoingMiddlewares(err.request, err));
 
 axios.interceptors.response.use(applyIngoingMiddlewares, err => applyIngoingMiddlewares(err.response, err));
+axios.defaults.withCredentials = true
 
 
 export async function postData(urlPath = '', queryParams, data) {
