@@ -22,7 +22,6 @@ const NewDrawing = () => {
     })
     const pencilRef = useRef(pencil);
     const setPencil = (newState) => {
-        console.log(pencilRef.current)
         newState = { ...pencilRef.current, ...newState }
         newState.color = availableColors[newState.colorIndex]
         pencilRef.current = newState
@@ -50,13 +49,6 @@ const NewDrawing = () => {
         if (form.title && form.title.length < 5) {
             errors.title = "Title must be at least 5 char long !"
         }
-        if (!form.file) {
-            errors.file = "No file joined"
-        }
-
-        if (form.file && form.file.type !== "image/jpeg") {
-            errors.file = "Only Jpeg allowed"
-        }
 
         const fileLimit = 5 * 1000 * 1000
         if (form.file && form.file.size > fileLimit) {
@@ -66,20 +58,23 @@ const NewDrawing = () => {
         return errors
     }
 
-    const createImageBlob = (cb) => {
-        return canvasRef.current.toBlob(function (blob) {
-            cb(new File([blob], form.title + '.jpeg', { type: 'image/jpeg' }))
-        }
-        )
+    const createImageBlob = () => {
+        return new Promise((resolve) => {
+            canvasRef.current.toBlob(function (blob) {
+                    resolve(new File([blob], form.title + '.jpeg', {type: 'image/jpeg'}))
+                }
+            )
+        })
     }
 
-    const submitForm = e => {
-        createImageBlob((file) => setForm({ ...form, file }))
-
-        const errors = getFormErrors(form)
+    const submitForm = async e => {
+        const file = await createImageBlob()
+        const finalForm = {...form, file}
+        const errors = getFormErrors(finalForm)
         if (Object.keys(errors).length > 0) {
             return setErrors(errors)
         }
+
 
         apiCreateDrawing(form.title, form.file).then(r => {
             if (!r.error && r) {
