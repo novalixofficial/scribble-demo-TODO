@@ -56,3 +56,7 @@ Here is some request that should work on the server, to help you with the urls a
 
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ea00f414721a65b1d68d)
+
+## Solution 
+
+This exercise is based off the [complete project](https://github.com/novalixofficial/scribble-demo) with some parts removed
